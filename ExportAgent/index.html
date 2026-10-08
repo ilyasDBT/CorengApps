@@ -1,48 +1,137 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ExportAgent - User Guide</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-        }
-
-        .container {
-            background: white;
-            max-width: 600px;
-            width: 90%;
-            padding: 40px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-        }
-
-        h1 {
-            margin-bottom: 15px;
-        }
-
-        p {
-            color: #666;
-            font-size: 16px;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ExportAgent quick guide</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #1c2b2a;
+      --muted: #5c6b6a;
+      --line: #d7e0df;
+      --paper: #f6f8f7;
+      --card: #fff;
+      --accent: #0f6e6a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font: 16px/1.5 "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+    main {
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+    header {
+      margin-bottom: 2rem;
+    }
+    h1 {
+      margin: 0 0 0.35rem;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    h2 {
+      margin: 2rem 0 0.6rem;
+      font-size: 1.2rem;
+    }
+    p, li { color: var(--ink); }
+    .lede { color: var(--muted); margin: 0; }
+    section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0.25rem 1.25rem 1.1rem;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.5rem 0 0.25rem;
+      font-size: 0.95rem;
+    }
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 0.45rem 0.5rem 0.45rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    th { color: var(--muted); font-weight: 600; }
+    code {
+      font-family: Consolas, monospace;
+      font-size: 0.92em;
+    }
+  </style>
 </head>
-
 <body>
-    <div class="container">
-        <h1>ExportAgent User Guide</h1>
-        <p>Site under development.</p>
-    </div>
+  <main>
+    <header>
+      <h1>ExportAgent</h1>
+      <p class="lede">Export Inventor parts, assemblies, and drawings to STEP, IGES, STL, DWF, PDF, and DXF.</p>
+    </header>
+
+    <section>
+      <h2>Where to find it</h2>
+      <p>Open Inventor 2025 or later and use the <strong>ExportAgent</strong> tab. It appears in a part, an assembly, a drawing, and when no document is open.</p>
+      <ul>
+        <li><strong>Active Selection or Document</strong> exports the file you are in. On a drawing this panel is named <strong>Active Document</strong>.</li>
+        <li><strong>Batch Export</strong> asks you to pick files from disk.</li>
+        <li><strong>Settings</strong> holds License, Prompt settings, and About.</li>
+      </ul>
+      <p>The same active-document commands are on the right-click menu. With no document open, only batch commands and Settings are available.</p>
+    </section>
+
+    <section>
+      <h2>License</h2>
+      <p>Sign in to Inventor with the Autodesk account that owns ExportAgent, then choose <strong>License</strong> and <strong>Check App Store</strong>. Export commands stay off until that check succeeds.</p>
+      <p>If the App Store cannot be reached, a license confirmed in the last 30 days still works. If the store says this account is not licensed, the commands turn off.</p>
+    </section>
+
+    <section>
+      <h2>What gets exported</h2>
+      <p>For STL, STEP, IGES, and DWF from a part or assembly:</p>
+      <ul>
+        <li>Selected bodies in a part are exported one by one. With nothing selected, the whole part is exported.</li>
+        <li>Selected components in an assembly are exported one by one. Several occurrences of the same file count once. With nothing selected, the whole assembly is exported.</li>
+        <li>To export every body or component, select them first, then run the command.</li>
+      </ul>
+      <p>A drawing export uses the active drawing. Sheet selection in the browser is ignored. For PDF, choose Current sheet, All sheets, or a sheet range in the options window.</p>
+      <p>Flat Pattern DXF writes the flat pattern of selected sheet-metal parts. In an assembly with nothing selected, it writes every sheet-metal part. If a sheet-metal part has no flat pattern yet, ExportAgent creates one. A part that is not sheet metal is reported as a failure.</p>
+      <p>DWF from a drawing publishes the whole drawing, including all sheets.</p>
+    </section>
+
+    <section>
+      <h2>Formats</h2>
+      <table>
+        <thead>
+          <tr><th>Command</th><th>From</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>STL, STEP, IGES</td><td>Part or assembly</td></tr>
+          <tr><td>Flat Pattern DXF</td><td>Sheet-metal part, or sheet-metal parts in an assembly</td></tr>
+          <tr><td>PDF, Drawing DXF, AutoCAD DWG</td><td>Drawing</td></tr>
+          <tr><td>DWF</td><td>Part, assembly, or drawing</td></tr>
+        </tbody>
+      </table>
+      <p>STL can write one file, or one file per part instance, from the Structure option. That split applies when the whole document is exported.</p>
+      <p>A multi-sheet Drawing DXF or AutoCAD DWG may be saved by Inventor as a zip of one file per sheet.</p>
+    </section>
+
+    <section>
+      <h2>Multi export</h2>
+      <p><strong>Export Multi</strong> writes the active file in every format you turn on. <strong>Batch Multi</strong> does the same for files you pick.</p>
+      <p>3D Model and Drawing each have a group checkbox. DWF is listed under 3D Model and Drawing because it applies to both. If both AutoCAD DWG and Drawing DXF are selected, choose <strong>Subfolder by type</strong> so the two zip or file names do not overwrite each other. You can also save everything in one folder, or in a subfolder named after each file.</p>
+    </section>
+
+    <section>
+      <h2>File names and prompts</h2>
+      <p>Each options window can append the export time, append the revision iProperty, and overwrite a file that already uses that name.</p>
+      <p><strong>Skip this dialog next time</strong> keeps those choices and hides the window on the next run. <strong>Prompt settings</strong> turns that skip on or off per command. A batch command shares the choice with its matching active-document command.</p>
+      <p>When more than one body, component, or file will be written, ExportAgent asks you to continue, then asks for a folder.</p>
+    </section>
+  </main>
 </body>
-```
+</html>
