@@ -38,6 +38,12 @@
       margin: 2rem 0 0.6rem;
       font-size: 1.2rem;
     }
+    h3 {
+      margin: 1.4rem 0 0.4rem;
+      font-size: 1.05rem;
+    }
+    ol { padding-left: 1.25rem; }
+    li { margin: 0.2rem 0; }
     p, li { color: var(--ink); }
     .lede { color: var(--muted); margin: 0; }
     section {
@@ -114,6 +120,44 @@
         <img src="Images/Context%20Menu.png" alt="Browser right-click menu with the ExportAgent submenu open">
         <figcaption>ExportAgent on the right-click menu.</figcaption>
       </figure>
+    </section>
+
+    <section>
+      <h2>Workflow</h2>
+
+      <h3>Method 1: Export selected objects</h3>
+      <ol>
+        <li>Select the objects you want to export. These can be components or solid bodies.</li>
+        <li>Right-click, choose <strong>ExportAgent</strong>, then choose the format.</li>
+      </ol>
+      <figure>
+        <img src="Images/Select%20Component.png" alt="Assembly browser with components selected and the ExportAgent menu open">
+        <figcaption>Select components or solid bodies, then choose a format.</figcaption>
+      </figure>
+      <ol start="3">
+        <li>Configure the export options, then click <strong>Continue</strong>.</li>
+      </ol>
+      <figure>
+        <img src="Images/Export%20Options.png" alt="STEP options window with protocol, filename, and Continue">
+        <figcaption>Set the options for this export, then continue.</figcaption>
+      </figure>
+      <ol start="4">
+        <li>Browse to the destination folder, then click <strong>Select Folder</strong> to run the export.</li>
+      </ol>
+
+      <h3>Method 2: Batch export</h3>
+      <ol>
+        <li>On the ribbon, open <strong>ExportAgent</strong>, then <strong>Batch Export</strong>, and run the batch command for the format you want.</li>
+      </ol>
+      <figure>
+        <img src="Images/Batch%20Export%20Ribbon.png" alt="ExportAgent ribbon with the Batch Export commands">
+        <figcaption>Batch commands on the ExportAgent tab.</figcaption>
+      </figure>
+      <ol start="2">
+        <li>Configure the export options, then click <strong>Continue</strong>.</li>
+        <li>Select the files to export, then click <strong>Open</strong>.</li>
+        <li>Browse to the destination folder, then click <strong>Select Folder</strong> to start the batch export.</li>
+      </ol>
     </section>
 
     <section>
